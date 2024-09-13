@@ -9,11 +9,11 @@ function ShopFilter({ filters, setFilters }) {
 
   const handlePriceChange = (value) => {
     setEndMinPrice(value)
-    setFilters({ ...filters, price: value })
+    setFilters(prev => ({ ...prev, price: value }))
   }
 
-  const handleCategoryChange = (event) => {
-    setFilters({ ...filters, category: event.target.value.toLowerCase() })
+  const handleCategoryChange = ({ target }) => {
+    setFilters(prev => ({ ...prev, category: target.value.toLowerCase() }))
   }
 
   return (

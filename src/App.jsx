@@ -2,10 +2,9 @@ import { useState } from "react"
 import { Container, Title } from "@mantine/core"
 import ShopFilter from "./components/ShopFilter"
 import ShopList from "./components/ShopList"
-import { products as initialProducts } from './mocks/products.json'
+import { products } from './mocks/products.json'
 
 function App() {
-  const [products] = useState(initialProducts)
   const [filters, setFilters] = useState({ price: 0, category: 'all' })
 
   const filterProducts = (products) => {
