@@ -1,8 +1,10 @@
 import { useState } from "react"
 import { Container, Title } from "@mantine/core"
+import { products } from './mocks/products.json'
+import { ShopCartProvider } from './contexts/ShopCartContext'
 import ShopFilter from "./components/ShopFilter"
 import ShopList from "./components/ShopList"
-import { products } from './mocks/products.json'
+import ShopCart from "./components/ShopCart"
 
 function App() {
   const [filters, setFilters] = useState({ price: 0, category: 'all' })
@@ -17,13 +19,17 @@ function App() {
   }
 
   return (
-    <Container size="md">
-      <Title order={1} align="center" style={{ marginTop: 20 }}>Shopping Cart</Title>
+    <ShopCartProvider>
+      <Container size="md">
+        <Title order={1} align="center" style={{ marginTop: 20 }}>Shopping Cart</Title>
 
-      <ShopFilter filters={filters} setFilters={setFilters} />
+        <ShopCart />
 
-      <ShopList products={filterProducts(products)} />
-    </Container>
+        <ShopFilter filters={filters} setFilters={setFilters} />
+
+        <ShopList products={filterProducts(products)} />
+      </Container>
+    </ShopCartProvider>
   )
 }
 
