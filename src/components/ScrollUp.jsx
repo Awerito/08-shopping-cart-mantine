@@ -11,10 +11,13 @@ function ScrollUp() {
         <Transition transition="slide-up" mounted={scroll.y > 0}>
           {(transitionStyles) => (
             <Button
-              leftSection={<IconArrowUp style={{ width: rem(16), height: rem(16) }} />}
               style={transitionStyles}
               onClick={() => scrollTo({ y: 0 })}
-            />
+              color="pink"
+              radius="xl"
+            >
+              <IconArrowUp style={{ width: rem(16), height: rem(16) }} />
+            </Button>
           )}
         </Transition>
       </Affix>
