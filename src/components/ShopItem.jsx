@@ -12,7 +12,7 @@ function ShopItem({ product, inCart }) {
       padding="lg"
       radius="md"
       key={product.id}
-      style={inCart ? { marginBottom: 10 } : {}}
+      style={{ display: 'flex', flexDirection: 'column', height: '100%', marginBottom: inCart ? 10 : 0 }}
     >
       <Card.Section>
         <Image
@@ -22,26 +22,30 @@ function ShopItem({ product, inCart }) {
         />
       </Card.Section>
 
-      <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>{product.title}</Text>
+      <Group justify="space-between" mt="md" mb="xs" style={{ flexGrow: 1 }}>
+        <Text fw={500} style={{ width: '60%' }}>{product.title}</Text>
         <Badge color="pink">{inCart ? `x${product.quantity}` : `$${product.price}`}</Badge>
       </Group>
 
-      {!inCart && <Text size="sm" c="dimmed">{product.description}</Text>}
+      {!inCart && (
+        <Text size="sm" c="dimmed" style={{ flexGrow: 1 }}>
+          {product.description}
+        </Text>
+      )}
 
       {!inCart ? (
-        <Button color="green" fullWidth mt="md" radius="md" onClick={() => addToCart(product)}>
+        <Button color="green" fullWidth mt="auto" radius="md" onClick={() => addToCart(product)}>
           + Add to cart
         </Button>
       ) : (
-        <Group justify="center" gap="xs">
-          <Button color="red" mt="md" radius="md" onClick={() => removeOneFromCart(product)}>
+        <Group justify="center" gap="xs" style={{ marginTop: 'auto' }}>
+          <Button color="red" radius="md" onClick={() => removeOneFromCart(product)}>
             ➖
           </Button>
-          <Button color="gray" mt="md" radius="md" onClick={() => removeFromCart(product)}>
+          <Button color="gray" radius="md" onClick={() => removeFromCart(product)}>
             🗑️
           </Button>
-          <Button color="green" mt="md" radius="md" onClick={() => addToCart(product)}>
+          <Button color="green" radius="md" onClick={() => addToCart(product)}>
             ➕
           </Button>
         </Group>
