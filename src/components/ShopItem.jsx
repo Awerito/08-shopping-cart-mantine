@@ -1,3 +1,4 @@
+import { IconPlus, IconMinus, IconTrash } from '@tabler/icons-react'
 import { useContext } from 'react'
 import { Card, Image, Group, Text, Badge, Button } from '@mantine/core'
 import { ShopCartContext } from '../contexts/ShopCartContext'
@@ -40,13 +41,13 @@ function ShopItem({ product, inCart }) {
       ) : (
         <Group justify="center" gap="xs" style={{ marginTop: 'auto' }}>
           <Button color="red" radius="md" onClick={() => removeOneFromCart(product)}>
-            ➖
+            <IconMinus />
           </Button>
           <Button color="gray" radius="md" onClick={() => removeFromCart(product)}>
-            🗑️
+            <IconTrash />
           </Button>
           <Button color="green" radius="md" onClick={() => addToCart(product)}>
-            ➕
+            <IconPlus />
           </Button>
         </Group>
       )}

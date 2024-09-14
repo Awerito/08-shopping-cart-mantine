@@ -1,3 +1,4 @@
+import { IconShoppingCart } from '@tabler/icons-react';
 import { useContext } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Button, Group, Text } from '@mantine/core';
@@ -8,9 +9,23 @@ function ShopCart() {
   const [opened, { open, close }] = useDisclosure(false);
   const { cart, itemCount, clearCart } = useContext(ShopCartContext);
 
+  const title = (
+    <>
+      <IconShoppingCart size={20} style={{ marginRight: 10 }} />
+      Your cart ({itemCount})
+    </>
+  );
+
+  const button = (
+    <>
+      <IconShoppingCart size={20} />
+      {itemCount > 0 ? itemCount : ''}
+    </>
+  );
+
   return (
     <>
-      <Drawer position="right" opened={opened} onClose={close} title={`🛒 Cart (${itemCount})`}>
+      <Drawer position="right" opened={opened} onClose={close} title={title}>
         {cart.map((product) => (
           <ShopItem key={product.id} product={product} inCart />
         ))}
@@ -33,7 +48,7 @@ function ShopCart() {
           radius="xl"
           onClick={opened ? close : open}
         >
-          🛒 {itemCount > 0 ? itemCount : ''}
+          {button}
         </Button >
       }
     </>
