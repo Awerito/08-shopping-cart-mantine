@@ -19,7 +19,7 @@ function ShopFilter({ filters, setFilters }) {
   return (
     <Group position="apart" grow>
       <InputLabel>
-        Price:
+        Price: ${endMinPrice}
         <Slider
           color="pink"
           min={0}
@@ -30,7 +30,6 @@ function ShopFilter({ filters, setFilters }) {
           onChangeEnd={handlePriceChange}
           label={(value) => `$ ${value}`}
         />
-        <Text>${endMinPrice}</Text>
       </InputLabel>
       <InputLabel>
         Category:
