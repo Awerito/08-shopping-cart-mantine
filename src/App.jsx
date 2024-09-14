@@ -5,6 +5,7 @@ import { ShopCartProvider } from './contexts/ShopCartContext'
 import ShopFilter from "./components/ShopFilter"
 import ShopList from "./components/ShopList"
 import ShopCart from "./components/ShopCart"
+import ScrollUp from "./components/ScrollUp"
 
 function App() {
   const [filters, setFilters] = useState({ price: 0, category: 'all' })
@@ -28,6 +29,8 @@ function App() {
         <ShopFilter filters={filters} setFilters={setFilters} />
 
         <ShopList products={filterProducts(products)} />
+
+        <ScrollUp />
       </Container>
     </ShopCartProvider>
   )
