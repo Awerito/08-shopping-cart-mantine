@@ -6,7 +6,14 @@ function ShopItem({ product, inCart }) {
   const { removeOneFromCart, removeFromCart, addToCart } = useContext(ShopCartContext)
 
   return (
-    <Card shadow="sm" padding="lg" radius="md" withBorder key={product.id}>
+    <Card
+      withBorder
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      key={product.id}
+      style={inCart ? { marginBottom: 10 } : {}}
+    >
       <Card.Section>
         <Image
           src={product.thumbnail}
