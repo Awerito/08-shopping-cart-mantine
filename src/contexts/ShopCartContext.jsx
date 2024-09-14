@@ -1,15 +1,10 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useMemo } from 'react';
 
 export const ShopCartContext = createContext();
 
 export const ShopCartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [itemCount, setItemCount] = useState(0);
-
-  useEffect(() => {
-    const count = cart.reduce((acc, item) => acc + item.quantity, 0);
-    setItemCount(count);
-  }, [cart]);
+  const itemCount = useMemo(() => cart.reduce((acc, item) => acc + item.quantity, 0), [cart]);
 
   const addToCart = (product) => {
     const existingProductIndex = cart.findIndex((item) => item.id === product.id);
