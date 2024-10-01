@@ -1,10 +1,11 @@
-import { IconPlus, IconMinus, IconTrash } from '@tabler/icons-react'
-import { useContext } from 'react'
-import { Card, Image, Group, Text, Badge, Button } from '@mantine/core'
-import { ShopCartContext } from '../contexts/ShopCartContext'
+import { IconPlus, IconMinus, IconTrash } from "@tabler/icons-react";
+import { useContext } from "react";
+import { Card, Image, Group, Text, Badge, Button } from "@mantine/core";
+import { ShopCartContext } from "../contexts/ShopCartContext";
 
 function ShopItem({ product, inCart }) {
-  const { removeOneFromCart, removeFromCart, addToCart } = useContext(ShopCartContext)
+  const { removeOneFromCart, removeFromCart, addToCart } =
+    useContext(ShopCartContext);
 
   return (
     <Card
@@ -13,19 +14,24 @@ function ShopItem({ product, inCart }) {
       padding="lg"
       radius="md"
       key={product.id}
-      style={{ display: 'flex', flexDirection: 'column', height: '100%', marginBottom: inCart ? 10 : 0 }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        marginBottom: inCart ? 10 : 0,
+      }}
     >
       <Card.Section>
-        <Image
-          src={product.thumbnail}
-          height={160}
-          alt={product.title}
-        />
+        <Image src={product.thumbnail} height={160} alt={product.title} />
       </Card.Section>
 
       <Group justify="space-between" mt="md" mb="xs" style={{ flexGrow: 1 }}>
-        <Text fw={500} style={{ width: '60%' }}>{product.title}</Text>
-        <Badge color="pink">{inCart ? `x${product.quantity}` : `$${product.price}`}</Badge>
+        <Text fw={500} style={{ width: "60%" }}>
+          {product.title}
+        </Text>
+        <Badge color="pink">
+          {inCart ? `x${product.quantity}` : `$${product.price}`}
+        </Badge>
       </Group>
 
       {!inCart && (
@@ -35,15 +41,29 @@ function ShopItem({ product, inCart }) {
       )}
 
       {!inCart ? (
-        <Button color="green" fullWidth mt="auto" radius="md" onClick={() => addToCart(product)}>
+        <Button
+          color="green"
+          fullWidth
+          mt="auto"
+          radius="md"
+          onClick={() => addToCart(product)}
+        >
           + Add to cart
         </Button>
       ) : (
-        <Group justify="center" gap="xs" style={{ marginTop: 'auto' }}>
-          <Button color="red" radius="md" onClick={() => removeOneFromCart(product)}>
+        <Group justify="center" gap="xs" style={{ marginTop: "auto" }}>
+          <Button
+            color="red"
+            radius="md"
+            onClick={() => removeOneFromCart(product)}
+          >
             <IconMinus />
           </Button>
-          <Button color="gray" radius="md" onClick={() => removeFromCart(product)}>
+          <Button
+            color="gray"
+            radius="md"
+            onClick={() => removeFromCart(product)}
+          >
             <IconTrash />
           </Button>
           <Button color="green" radius="md" onClick={() => addToCart(product)}>
@@ -52,7 +72,7 @@ function ShopItem({ product, inCart }) {
         </Group>
       )}
     </Card>
-  )
+  );
 }
 
 export default ShopItem;

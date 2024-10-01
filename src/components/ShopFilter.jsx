@@ -1,20 +1,20 @@
-import { useState } from "react"
-import { Group, InputLabel, Slider, Text, NativeSelect } from "@mantine/core"
+import { useState } from "react";
+import { Group, InputLabel, Slider, Text, NativeSelect } from "@mantine/core";
 
-const categories = ["All", "Groceries", "Furniture", "Beauty", "Fragrances"]
+const categories = ["All", "Groceries", "Furniture", "Beauty", "Fragrances"];
 
 function ShopFilter({ filters, setFilters }) {
-  const [minPrice, setMinPrice] = useState(filters.price)
-  const [endMinPrice, setEndMinPrice] = useState(filters.price)
+  const [minPrice, setMinPrice] = useState(filters.price);
+  const [endMinPrice, setEndMinPrice] = useState(filters.price);
 
   const handlePriceChange = (value) => {
-    setEndMinPrice(value)
-    setFilters(prev => ({ ...prev, price: value }))
-  }
+    setEndMinPrice(value);
+    setFilters((prev) => ({ ...prev, price: value }));
+  };
 
   const handleCategoryChange = ({ target }) => {
-    setFilters(prev => ({ ...prev, category: target.value.toLowerCase() }))
-  }
+    setFilters((prev) => ({ ...prev, category: target.value.toLowerCase() }));
+  };
 
   return (
     <Group position="apart" grow>
@@ -40,7 +40,7 @@ function ShopFilter({ filters, setFilters }) {
         />
       </InputLabel>
     </Group>
-  )
+  );
 }
 
-export default ShopFilter
+export default ShopFilter;
